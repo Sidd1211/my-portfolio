@@ -1,10 +1,11 @@
-import React from "react";
+// import React from "react";
 import { Parallax } from "react-parallax";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import BGImage from "../assets/images/me_bw.jpg";
 import BGImageR from "../assets/images/me_red.jpg";
 import AMImage from "../assets/images/IMG_20200131_063804.jpg";
+
 function HomePage() {
     return (
         <div className="bg-gray-900 text-white">
@@ -20,9 +21,9 @@ function HomePage() {
                 }}
                 className="h-screen"
             >
-                <div className="h-screen flex flex-col items-center justify-center text-center">
+                <div className="h-screen flex flex-col items-center justify-center text-center px-4">
                     <motion.h1
-                        className="text-6xl font-bold mb-6"
+                        className="text-5xl md:text-6xl font-bold mb-6"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
@@ -30,14 +31,14 @@ function HomePage() {
                         Welcome to <span className="text-yellow-300">My Portfolio</span>
                     </motion.h1>
                     <motion.p
-                        className="text-lg text-gray-100 mb-8"
+                        className="text-base md:text-lg text-gray-100 mb-8"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
                     >
                         A creative Full-Stack Developer building awesome web experiences.
                     </motion.p>
-                    <div className="space-x-4">
+                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <motion.button
                             className="bg-yellow-300 text-gray-900 px-6 py-3 rounded-lg font-bold shadow-md hover:shadow-xl"
                             whileHover={{ scale: 1.1 }}
@@ -57,7 +58,7 @@ function HomePage() {
             </Parallax>
 
             {/* About Me Section */}
-            <section className="h-screen bg-gray-800 flex items-center justify-center">
+            <section className="bg-gray-800 py-16 flex items-center justify-center">
                 <div className="container mx-auto px-6 md:px-12 lg:px-16 flex flex-col md:flex-row items-center">
                     {/* Profile Image */}
                     <motion.div
@@ -67,7 +68,7 @@ function HomePage() {
                         transition={{ duration: 1 }}
                     >
                         <img
-                            src={AMImage} // Replace with your actual image URL
+                            src={AMImage}
                             alt="Profile"
                             className="w-full h-full object-cover"
                         />
@@ -76,7 +77,7 @@ function HomePage() {
                     {/* About Me Text */}
                     <div className="max-w-lg text-center md:text-left">
                         <motion.h2
-                            className="text-4xl font-bold text-yellow-300 mb-6"
+                            className="text-3xl md:text-4xl font-bold text-yellow-300 mb-6"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
@@ -84,7 +85,7 @@ function HomePage() {
                             About Me
                         </motion.h2>
                         <motion.p
-                            className="text-lg text-gray-300"
+                            className="text-base md:text-lg text-gray-300"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.2 }}
@@ -99,6 +100,7 @@ function HomePage() {
                 </div>
             </section>
 
+
             {/* Experience Section with Parallax */}
             <Parallax
                 bgImage={BGImageR}
@@ -109,58 +111,61 @@ function HomePage() {
                     width: "100%",  // Maintain full image width
                     objectFit: "cover",
                 }}
-                className="h-screen"
+                className="h-auto"
             >
-                <div className="h-screen flex flex-col items-center justify-center text-center">
+                <div className="py-16 flex flex-col items-center justify-center text-center">
                     <motion.h2
-                        className="text-4xl font-bold text-yellow-300 mb-6"
+                        className="text-4xl font-bold text-yellow-300 mb-12"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
                     >
                         My Experience
                     </motion.h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    {/* Experience Cards Container */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2  gap-8 px-6 md:px-12 max-w-6xl w-full">
                         {[
                             {
-                                title: "Full-Stack Developer",
-                                company: "Tech Solutions",
-                                duration: "2020 - Present",
+                                title: "Project Engineer | Full Stack Developer",
+                                company: "Centre for Development of Advanced Computing",
+                                duration: "2022 - Present",
                                 description:
                                     "Developed scalable web applications using React, Node.js, and MongoDB, leading to a 30% improvement in system performance.",
                             },
                             {
-                                title: "Software Engineer Intern",
-                                company: "Innovate Labs",
-                                duration: "2019 - 2020",
+                                title: "Project Associate | Full Stack Developer",
+                                company: "Centre for Development of Advanced Computing",
+                                duration: "2021 - 2022",
                                 description:
                                     "Worked on RESTful API design and optimized database queries, reducing response times by 40%.",
-                            },
-                            {
-                                title: "Junior Developer",
-                                company: "StartUp Hub",
-                                duration: "2018 - 2019",
-                                description:
-                                    "Collaborated on UI/UX enhancements, increasing user engagement by 25% through better design and performance.",
                             },
                         ].map((experience, index) => (
                             <motion.div
                                 key={index}
-                                className="bg-gray-900 p-4 rounded-lg shadow-md hover:shadow-xl"
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
+                                className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl flex flex-col"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.8, delay: index * 0.2 }}
                             >
-                                <h3 className="text-xl font-bold text-yellow-300 mb-2">
+                                <h3 className="text-2xl font-bold text-yellow-300 mb-3">
                                     {experience.title}
                                 </h3>
-                                <p className="text-gray-300">{experience.company}</p>
-                                <p className="text-gray-500">{experience.duration}</p>
-                                <p className="text-gray-400 mt-2">{experience.description}</p>
+                                <p className="text-lg text-gray-300 mb-1">
+                                    {experience.company}
+                                </p>
+                                <p className="text-gray-400 text-sm italic mb-3">
+                                    {experience.duration}
+                                </p>
+                                <p className="text-gray-400">
+                                    {experience.description}
+                                </p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </Parallax>
+
         </div>
     );
 }
