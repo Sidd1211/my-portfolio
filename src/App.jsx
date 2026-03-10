@@ -1,29 +1,60 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/Home";
 import SkillsPage from "./pages/Skills";
 import ExperiencePage from "./pages/Experience";
+import ProjectsPage from "./pages/Projects";
+import ContactPage from "./pages/Contact";
+
+// Utility to reset scroll position on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 function App() {
   return (
     <Router>
-      <Header />
-      <main className="flex-grow bg-gray-900 text-white">
-        <Routes>
-          {/* Redirect "/" to "/home" */}
-          <Route path="/" element={<Navigate to="/home" />} />
-          {/* Home Page */}
-          <Route path="/home" element={<HomePage />} />
-          {/* Skills Page */}
-          <Route path="/skills" element={<SkillsPage />} />
-          {/* Experience Page */}
-          <Route path="/experience" element={<ExperiencePage />} />
-          {/* 404 Page */}
-          <Route path="*" element={<div className="text-center mt-10">Page Not Found</div>} />
-        </Routes>
-      </main>
-      <Footer />
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen bg-[#030712]">
+        <Header />
+        
+        {/* main container ensures footer stays at bottom if content is short */}
+        <main className="flex-grow">
+          <Routes>
+            {/* Standard: Use "/" for Home instead of a redirect to /home */}
+            <Route path="/" element={<HomePage />} />
+            
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+
+            {/* Custom 404 Page matching your theme */}
+            <Route 
+              path="*" 
+              element={
+                <div className="h-[70vh] flex flex-col items-center justify-center text-center px-4">
+                  <h1 className="text-9xl font-black text-gray-800">404</h1>
+                  <p className="text-2xl text-blue-400 font-mono mt-4 uppercase tracking-widest">
+                    System Error: Page Not Found
+                  </p>
+                  <a href="/" className="mt-8 text-white border-b border-blue-500 pb-1 hover:text-blue-400 transition-colors">
+                    Return to Terminal
+                  </a>
+                </div>
+              } 
+            />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </Router>
   );
 }
