@@ -7,6 +7,7 @@ import SkillsPage from "./pages/Skills";
 import ExperiencePage from "./pages/Experience";
 import ProjectsPage from "./pages/Projects";
 import ContactPage from "./pages/Contact";
+import TestimonialsPage from "./pages/Testimonials";
 
 // Utility to reset scroll position on route change
 const ScrollToTop = () => {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/experience" element={<ExperiencePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
 
             {/* Custom 404 Page matching your theme */}
             <Route 

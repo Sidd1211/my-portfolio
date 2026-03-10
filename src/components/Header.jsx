@@ -24,7 +24,7 @@ function Header() {
         {/* Navigation Links */}
         <nav>
           <ul className="flex space-x-10">
-            {["Home", "Projects", "Skills", "Experience"].map((item, index) => (
+            {["Home", "Projects", "Skills", "Experience", "Contact", "Testimonials"].map((item, index) => (
               <motion.li
                 key={index}
                 whileHover={{ y: -2 }}

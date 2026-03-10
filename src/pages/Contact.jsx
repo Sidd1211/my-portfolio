@@ -13,7 +13,7 @@ import { Send, MapPin } from "lucide-react";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
-  const email = "siddhant.singh@example.com";
+  const email = "siddhantkumarsingh1211@gmail.com";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(email);
@@ -22,8 +22,8 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: <FaLinkedin />, link: "#", label: "LinkedIn", color: "hover:text-[#0A66C2]" },
-    { icon: <FaGithub />, link: "#", label: "GitHub", color: "hover:text-[#f8fafc]" },
+    { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/siddhantkumarsingh", label: "LinkedIn", color: "hover:text-[#0A66C2]" },
+    { icon: <FaGithub />, link: "https://github.com/Sidd1211", label: "GitHub", color: "hover:text-[#f8fafc]" },
     { icon: <FaYoutube />, link: "#", label: "YouTube", color: "hover:text-[#FF0000]" },
     { icon: <FaTwitter />, link: "#", label: "Twitter", color: "hover:text-[#1DA1F2]" },
     { icon: <FaDiscord />, link: "#", label: "Discord", color: "hover:text-[#5865F2]" },
